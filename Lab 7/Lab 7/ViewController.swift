@@ -109,7 +109,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             
             maxAccelerationValue =  max(acceleration, maxAccelerationValue)
             
-            MaxAcceleration.text = String (format : "%.3f", maxAccelerationValue) + "m/s^2"
+            MaxAcceleration.text = String (format : "%.3f", maxAccelerationValue) + " m/s^2"
         }
 
         previousSpeed = location.speed
