@@ -78,17 +78,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     if (location.speed * 3.6) > 115 && !distanceBeforeExceedingDisplayed {
         
+        //Display Distance Travel Before Exceeding the Speed
         print("Driver Travel Before Exceeding the Speed : \(round(traveledDistance * 100 / 1000) / 100.0) km")
         
         distanceBeforeExceedingDisplayed = true
     }
-        
+        //Displat Distance
         Distance.text = "\(round(traveledDistance*100/1000)/100.0) km"
 
+        //Display Current Speed
         CurrentSpeed.text = "\(String(format: "%.2f", location.speed * 3.6)) km/h"
 
         speedsArray.append(location.speed*3.6)
 
+        //Display Maximum Speed
         MaxSpeed.text = "\(String(format: "%.2f", speedsArray.max() ?? 0)) km/h"
 
         var totalSpeed : Double = 0.0
@@ -106,9 +109,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             let timeDifference = Date().timeIntervalSince(previousTime!)
             
             let acceleration = speedDifference/timeDifference
-            
+           
             maxAccelerationValue =  max(acceleration, maxAccelerationValue)
             
+            //Display MaxAcceleration
             MaxAcceleration.text = String (format : "%.3f", maxAccelerationValue) + " m/s^2"
         }
 
@@ -116,6 +120,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 
         previousTime = Date()
 
+        //Display Average Speed
         AverageSpeed.text = "\(String(format: "%.2f", avgSpeedMeasured)) km/h"
 
         ExceededView.backgroundColor = (location.speed * 3.6) > 115 ? UIColor.red : UIColor.white
